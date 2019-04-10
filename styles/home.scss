@@ -65,6 +65,8 @@ body {
 }
 
 .navbar {
+  display: flex;
+  align-items: stretch;
   background: tomato;
   border-bottom: 1px solid black;
   height: 60px;
@@ -76,13 +78,21 @@ body {
 }
 
 .navbar-brand {
+  align-items: flex-start;
   color: inherit;
   display: block;
   float: left;
   font-weight: 700;
-  font-size: 28px;
-  height: 60px;
-  line-height: 60px;
-  padding: 0 10px;
+  font-size: 2em;
+  height: 3em;
+  line-height:3 em;
+  padding:  1em;
   text-decoration: none;
+}
+
+.nav-image {
+  align-items: flex-end;
+  height: 60px;
+  display: right;
+  padding: 0;
 }

@@ -23,6 +23,19 @@ class App extends Component {
       ]
     }
   }
+addMessage(message) {
+this.setState ({
+  messages: [ 
+    {
+  username: this.username,
+  id: Math.floor((Math.random() * 100) + 1),
+  content: message
+        }
+      ]
+    }
+  )
+}
+
   componentDidMount() {
     console.log("componentDidMount <App />");
     setTimeout(() => {
@@ -40,11 +53,10 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar">
-        <h3>chat E</h3>
-        {/* <img src="./build/que.gif"></img> official mascot gif */}
+        <img className = "nav-image" src="./build/Flower_ICQ.png"></img>
+        <h3>Not ICQ</h3>
         </nav>
-        <ChatBar user={this.state.currentUser} />
-        
+        <ChatBar user={this.state.currentUser} messages={this.state.messages} />
         <MessageList messages={this.state.messages} />
       </div> 
     );
