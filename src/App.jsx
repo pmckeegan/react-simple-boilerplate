@@ -23,8 +23,6 @@ class App extends Component {
       ]
     }
   }
-
-  // in App.jsx
   componentDidMount() {
     console.log("componentDidMount <App />");
     setTimeout(() => {
@@ -37,28 +35,19 @@ class App extends Component {
       this.setState({messages: messages})
     }, 3000);
   }
-  
   render() {
-    <App />// more code here..
-  
-
-    
-    
+    <App />
     return (
-      
       <div>
         <nav className="navbar">
         <h3>chat E</h3>
-        {/* <img src="./build/que.gif"></img> */}
+        {/* <img src="./build/que.gif"></img> official mascot gif */}
         </nav>
         <ChatBar user={this.state.currentUser} />
+        
         <MessageList messages={this.state.messages} />
       </div> 
-      
     );
   } 
 }
-
-
-
 export default App;
