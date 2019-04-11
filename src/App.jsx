@@ -32,24 +32,25 @@ class App extends Component {
       username: this.state.currentUser.name,
       content: newMessage,
       id: Math.floor((Math.random() * 100000) + 1)
-    })
-    this.setState(this.state.messages: messageObject)    
-    }
-    
-  componentDidMount() {
-    // eslint-disable-next-line no-console
-    // console.log('componentDidMount <App />');
-    setTimeout(() => {
-      // eslint-disable-next-line no-console
-      // console.log('Simulating incoming message');
-      // Add a new message to the list of messages in the data store
-      const newMessage = {id: 3, username: 'Michelle', content: 'Hello there!'};
-      const messages = this.state.messages.concat(newMessage)
-      // Update the state of the app component.
-      // Calling setState will trigger a call to render() in App and all child components.
-      this.setState({messages: messages})
-    }, 3000);
+      })
+    this.setState({messages: messageObject})
   }
+  
+  
+  componentDidMount() {
+    this.socket = new WebSocket("ws://localhost:3001");
+    this.socket.onopen = () => {
+      console.log("Connected to ws server.");
+      this.socket.send(JSON.stringify(
+        {
+          username: this.state.currentUser.name,
+          content: this.state.messages.content,
+          id: Math.floor((Math.random() * 100000) + 1)
+        }
+        ))
+      };  
+    }
+
   render() {
     <App />
     return (
@@ -66,6 +67,15 @@ class App extends Component {
         <MessageList Messages={this.state.messages} />
       </div> 
     );
-  } 
+  }
+  
+  _sendMessage = () => {
+    if (this.state.newMessage) {
+      const message = { messages};
+      this.socket.send(JSON.stringify(message));
+
+      this.setState({ newMessage: "" });
+    }
+  };
 }
 export default App;
