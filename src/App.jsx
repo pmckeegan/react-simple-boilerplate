@@ -6,24 +6,24 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = 
+    {
       currentUser: {name: 'Bob'},
-      messages: []//store messages from server here.
+      messages: []
     }
     this.newMessage = this.newMessage.bind(this);
     // this.newMessage.prepend(this.state.messages)
   }
 
   newMessage(newMessage) {
-  const messageObject = this.state.messages;
-    messageObject.push(
-      {
-      username: this.state.currentUser.name,
-      content: newMessages
-      // id: Math.floor((Math.random() * 100000) + 1)
-      })
-    this.setState({messages: messageObject});
-    this.socket.send(JSON.stringify(messageObject));    
+    const messageObject = this.state.messages;
+      messageObject.push(
+        {
+        username: this.state.currentUser.name,
+        content: newMessage
+        })
+      this.setState({messages: messageObject});
+      this.socket.send(JSON.stringify(messageObject));    
   }
   
   componentDidMount() {
