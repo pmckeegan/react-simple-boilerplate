@@ -1,30 +1,48 @@
 
 import React, {Component} from 'react';
-
-class ChatBar extends Component {
-  render() {
-
-    // const newMessage = (onKeyDown={(ev) => {
-    //   if (ev.keyCode === '13') {
-    //     this.props.addMessage(messages.value);
-    //     console.log(chatbar-message);
-    //   }
-
+  class ChatBar extends Component {
+    constructor(props) {
+      super(props) 
+      this.state = {
+          message: ''
+          }
+        this.updateMessage = this.updateMessage.bind(this)
+    }
+    updateMessage(event) {
+      this.setState({
+        message: event.target.value
+        }
+      )
+    }
+    render() {
     return (
-      <footer className="chatbar">
-        <input className="chatbar-username" defaultValue={this.props.user.name} placeholder="Your Name (Optional)" />
+    <footer className="chatbar">
+    <form>
+    {  }
+        <input 
+          className="chatbar-username" 
+          defaultValue={this.props.user.name} 
+          placeholder="Your Name (Optional)" 
+        />
 
-        <input className="chatbar-message" placeholder="Type a message and hit ENTER"   
-       />
-      </footer>
-    );
+        <input 
+          className="chatbar-message" 
+          value={this.state.message} 
+          onChange={this.updateMessage} 
+          id="message" 
+          placeholder="Type a message and hit ENTER" 
+          onKeyPress={event => {
+          if (event.key === 'Enter'){
+            this.props.newMessage(this.state.message);
+              }
+            }
+          }
+        />
+    </form>
+    </footer>
+    )
   }
 }
+ 
+
 export default ChatBar;
-
-// onChange={(e) => {
-//   this.setState({e.target.value})
-// }} 
-
-// write handler function
-

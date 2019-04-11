@@ -6,7 +6,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       currentUser: {name: 'Bob'},
       messages: [
@@ -22,24 +21,28 @@ class App extends Component {
         }
       ]
     }
+    this.newMessage = this.newMessage.bind(this)
   }
-addMessage(message) {
-this.setState ({
-  messages: [ 
-    {
-  username: this.username,
-  id: Math.floor((Math.random() * 100) + 1),
-  content: message
+
+  newMessage(newMessage) {
+    this.setState ({
+      messages: [ 
+        {
+      username: this.state.currentUser.name,
+      content: newMessage, 
+      id: Math.floor((Math.random() * 10000) + 1)
+            }
+          ]
         }
-      ]
+      )
     }
-  )
-}
 
   componentDidMount() {
-    console.log("componentDidMount <App />");
+    // eslint-disable-next-line no-console
+    // console.log('componentDidMount <App />');
     setTimeout(() => {
-      console.log("Simulating incoming message");
+      // eslint-disable-next-line no-console
+      // console.log('Simulating incoming message');
       // Add a new message to the list of messages in the data store
       const newMessage = {id: 3, username: 'Michelle', content: 'Hello there!'};
       const messages = this.state.messages.concat(newMessage)
@@ -56,8 +59,12 @@ this.setState ({
         <img className = "nav-image" src="./build/Flower_ICQ.png"></img>
         <h3>Not ICQ</h3>
         </nav>
-        <ChatBar user={this.state.currentUser} messages={this.state.messages} />
-        <MessageList messages={this.state.messages} />
+        <ChatBar 
+          user={this.state.currentUser} 
+          newMessage={this.newMessage} 
+          />
+
+        <MessageList Messages={this.state.messages} />
       </div> 
     );
   } 
