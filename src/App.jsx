@@ -33,9 +33,7 @@ class App extends Component {
       content: newMessage,
       id: Math.floor((Math.random() * 100000) + 1)
     })
-    this.setState(this.state.messages: messageObject)
-    console.log(messageObject);
-    
+    this.setState(this.state.messages: messageObject)    
     }
     
   componentDidMount() {
