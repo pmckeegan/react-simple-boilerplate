@@ -5,7 +5,7 @@ import React, {Component} from 'react';
       super(props) 
       this.state = {
           message: ''
-          }
+      }
         this.updateMessage = this.updateMessage.bind(this)
     }
     updateMessage(event) {
@@ -14,6 +14,14 @@ import React, {Component} from 'react';
         }
       )
     }
+
+    postNewMessage = (event)=> {
+      if (event.key === 'Enter'){
+      this.props.newMessage(this.state.message);
+      event.target.value='';
+      console.log(event.target.value);
+        }
+      }
     render() {
     return (
     <footer className="chatbar">
@@ -27,22 +35,15 @@ import React, {Component} from 'react';
 
         <input 
           className="chatbar-message" 
-          value={this.state.message} 
+          defaultValue='' 
           onChange={this.updateMessage} 
           id="message" 
           placeholder="Type a message and hit ENTER" 
-          onKeyPress={event => {
-          if (event.key === 'Enter'){
-            this.props.newMessage(this.state.message);
-              }
-            }
-          }
+          onKeyPress={this.postNewMessage}
         />
     </form>
     </footer>
     )
   }
 }
- 
-
 export default ChatBar;

@@ -16,27 +16,28 @@ class App extends Component {
         },
         {
           username: 'Anonymous',
-          content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.',
+          content: 'No, I think you lost them. You lost your marbles Bob. You lost them for goo.',
           id:667
         }
       ]
     }
-    this.newMessage = this.newMessage.bind(this)
+    this.newMessage = this.newMessage.bind(this);
+    // this.newMessage.prepend(this.state.messages)
   }
 
   newMessage(newMessage) {
-    this.setState ({
-      messages: [ 
-        {
+    const messageObject = this.state.messages;
+    messageObject.push(
+      {
       username: this.state.currentUser.name,
-      content: newMessage, 
-      id: Math.floor((Math.random() * 10000) + 1)
-            }
-          ]
-        }
-      )
+      content: newMessage,
+      id: Math.floor((Math.random() * 100000) + 1)
+    })
+    this.setState(this.state.messages: messageObject)
+    console.log(messageObject);
+    
     }
-
+    
   componentDidMount() {
     // eslint-disable-next-line no-console
     // console.log('componentDidMount <App />');
