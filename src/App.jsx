@@ -8,48 +8,30 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: {name: 'Bob'},
-      messages: [
-        {
-          username: 'Bob',
-          content: 'Has anyone seen my marbles?',
-          id: 666
-        },
-        {
-          username: 'Anonymous',
-          content: 'No, I think you lost them. You lost your marbles Bob. You lost them for goo.',
-          id:667
-        }
-      ]
+      messages: []//store messages from server here.
     }
     this.newMessage = this.newMessage.bind(this);
     // this.newMessage.prepend(this.state.messages)
   }
 
   newMessage(newMessage) {
-    const messageObject = this.state.messages;
+  const messageObject = this.state.messages;
     messageObject.push(
       {
       username: this.state.currentUser.name,
-      content: newMessage,
-      id: Math.floor((Math.random() * 100000) + 1)
+      content: newMessages
+      // id: Math.floor((Math.random() * 100000) + 1)
       })
-    this.setState({messages: messageObject})
+    this.setState({messages: messageObject});
+    this.socket.send(JSON.stringify(messageObject));    
   }
-  
   
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
     this.socket.onopen = () => {
       console.log("Connected to ws server.");
-      this.socket.send(JSON.stringify(
-        {
-          username: this.state.currentUser.name,
-          content: this.state.messages.content,
-          id: Math.floor((Math.random() * 100000) + 1)
-        }
-        ))
-      };  
-    }
+    };  
+  }
 
   render() {
     <App />
