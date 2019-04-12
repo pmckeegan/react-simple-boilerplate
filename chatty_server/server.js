@@ -30,16 +30,14 @@ wss.broadcast = function broadcast(message) {
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
 wss.on('connection', (ws) => {
-  console.log('Client connected');
+
   ws.on('message', function incoming(data) {
     const message = JSON.parse(data);
     message.id = uuid();
+    console.log("message", message);
     wss.broadcast (JSON.stringify(message));
   });
 });
-
-
-
 // Set up a callback for when a client closes the socket. This usually means they closed their browser.
 // eslint-disable-next-line no-console
 wss.on('close', () => console.log('Client disconnected'));

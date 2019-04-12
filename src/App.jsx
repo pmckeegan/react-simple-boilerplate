@@ -8,20 +8,35 @@ class App extends Component {
     super(props);
     this.state = 
     {
-      currentUser: {name: 'Bob'},
+      currentUser: "anon",
       messages: []
     }
     this.newMessage = this.newMessage.bind(this);
+    this.newUsername = this.newUsername.bind(this);
   }
+
+// save new username from the client
+newUsername(newUsername) { 
+  
+  const nameObject = 
+     {
+     username: newUsername,
+     type: "newUserNotification",
+     oldUserName: this.state.currentUser
+     }
+     this.setState({currentUser: newUsername})
+   this.socket.send(JSON.stringify(nameObject));    
+}
+
 //receive new message from client
   newMessage(newMessage) {
-    
-     const messageObject = 
-        {
-        username: this.state.currentUser.name,
-        content: newMessage
-        }
-      this.socket.send(JSON.stringify(messageObject));    
+    const messageObject = 
+      {
+      username: this.state.currentUser,
+      content: newMessage,
+      type: "message"
+      }
+    this.socket.send(JSON.stringify(messageObject));    
   }
    //connect to server and receive messages
   componentDidMount() {
@@ -30,10 +45,10 @@ class App extends Component {
     }; 
     this.socket.onmessage = (event) =>{
      const messageFromServer =  JSON.parse(event.data);
-      console.log("message received from server", messageFromServer);
-      console.log(this);
       const messageArray = this.state.messages;
       messageArray.push(messageFromServer);
+      console.log("message returned from server to app.jsx", messageArray);
+
       this.setState({messages: messageArray});
 
 
@@ -51,21 +66,32 @@ class App extends Component {
         </nav>
         <ChatBar 
           user={this.state.currentUser} 
-          newMessage={this.newMessage} 
+          newMessage={this.newMessage}
+          newUsername={this.newUsername} 
           />
 
-        <MessageList Messages={this.state.messages} />
+        <MessageList 
+          Messages={this.state.messages}
+          user={this.state.currentUser} 
+        />
       </div> 
     );
   }
   //send message to server
   _sendMessage = () => {
     if (this.state.newMessage) {
-      const message = { messages};
+      const message = {messages};
       this.socket.send(JSON.stringify(message));
-
       this.setState({ newMessage: "" });
     }
   };
+    //send message to server
+    _senduserName = () => {
+      if (this.state.currentUser) {
+        const userName = {currentUser};
+        this.socket.send(JSON.stringify(userName));
+        // this.setState({ currentUser: "" });
+      }
+    };
 }
 export default App;
