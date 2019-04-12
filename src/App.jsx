@@ -12,27 +12,35 @@ class App extends Component {
       messages: []
     }
     this.newMessage = this.newMessage.bind(this);
-    // this.newMessage.prepend(this.state.messages)
   }
-
+//receive new message from client
   newMessage(newMessage) {
-    const messageObject = this.state.messages;
-      messageObject.push(
+    
+     const messageObject = 
         {
         username: this.state.currentUser.name,
         content: newMessage
-        })
-      this.setState({messages: messageObject});
+        }
       this.socket.send(JSON.stringify(messageObject));    
   }
-  
+   //connect to server and receive messages
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
     this.socket.onopen = () => {
-      console.log("Connected to ws server.");
-    };  
-  }
+    }; 
+    this.socket.onmessage = (event) =>{
+     const messageFromServer =  JSON.parse(event.data);
+      console.log("message received from server", messageFromServer);
+      console.log(this);
+      const messageArray = this.state.messages;
+      messageArray.push(messageFromServer);
+      this.setState({messages: messageArray});
 
+
+
+  }
+}
+  //send html
   render() {
     <App />
     return (
@@ -50,7 +58,7 @@ class App extends Component {
       </div> 
     );
   }
-  
+  //send message to server
   _sendMessage = () => {
     if (this.state.newMessage) {
       const message = { messages};
