@@ -9,7 +9,8 @@ class App extends Component {
     this.state = 
     {
       currentUser: "anon",
-      messages: []
+      messages: [],
+      peopleOnline: 0
     }
     this.newMessage = this.newMessage.bind(this);
     this.newUsername = this.newUsername.bind(this);
@@ -47,12 +48,13 @@ newUsername(newUsername) {
      const messageFromServer =  JSON.parse(event.data);
       const messageArray = this.state.messages;
       messageArray.push(messageFromServer);
-      console.log("message returned from server to app.jsx", messageArray);
-
       this.setState({messages: messageArray});
+      
+      if (messageFromServer.type === "clientCount") { 
 
-
-
+      this.setState({peopleOnline: messageFromServer.clients})
+      console.log("people online", this.state.peopleOnline)
+      };
   }
 }
   //send html
@@ -60,7 +62,9 @@ newUsername(newUsername) {
     <App />
     return (
       <div>
+        
         <nav className="navbar">
+        <div> {this.state.peopleOnline} online </div>
         <img className = "nav-image" src="./build/Flower_ICQ.png"></img>
         <h3>Not ICQ</h3>
         </nav>
