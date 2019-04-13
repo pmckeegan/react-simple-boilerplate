@@ -39,7 +39,8 @@ newUsername(newUsername) {
       }
     this.socket.send(JSON.stringify(messageObject));    
   }
-   //connect to server and receive messages
+
+  //connect to server and receive messages
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
     this.socket.onopen = () => {
@@ -55,24 +56,26 @@ newUsername(newUsername) {
       this.setState({peopleOnline: messageFromServer.clients})
       console.log("people online", this.state.peopleOnline)
       };
+    }
   }
-}
-  //send html
+  //send html to client
   render() {
     <App />
     return (
       <div>
         
         <nav className="navbar">
-        <div> {this.state.peopleOnline} online </div>
-        <img className = "nav-image" src="./build/Flower_ICQ.png"></img>
-        <h3>Not ICQ</h3>
+        <div>
+          <img className = "nav-image" src="./build/Flower_ICQ.png"></img>
+          <h3 className="appTitle">Not ICQ</h3>
+        </div>
+        <div className="connectedUsers"> {this.state.peopleOnline} online </div>
         </nav>
         <ChatBar 
           user={this.state.currentUser} 
           newMessage={this.newMessage}
           newUsername={this.newUsername} 
-          />
+        />
 
         <MessageList 
           Messages={this.state.messages}
@@ -89,13 +92,12 @@ newUsername(newUsername) {
       this.setState({ newMessage: "" });
     }
   };
-    //send message to server
-    _senduserName = () => {
+  //send username to server
+   _senduserName = () => {
       if (this.state.currentUser) {
         const userName = {currentUser};
         this.socket.send(JSON.stringify(userName));
-        // this.setState({ currentUser: "" });
       }
-    };
+   };
 }
 export default App;

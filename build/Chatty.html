@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Chatty</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+  
+  </style>
+    <style type="text/css">h1 {
+  color: tomato; }
+
+body {
+  background: white;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  margin: 70px 0; }
+
+.chatbar {
+  background: tomato;
+  border-top: 1px solid black;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  padding: 5px;
+  position: fixed;
+  right: 0; }
+
+.chatbar-message,
+.chatbar-username {
+  border: 1px solid black;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  margin: 5px;
+  padding: 0 9px; }
+
+.chatbar-message {
+  flex: 8; }
+
+.chatbar-username {
+  flex: 2; }
+
+.message {
+  display: flex;
+  padding: 5px; }
+
+.message.system {
+  font-style: italic;
+  padding: 5px 20px; }
+
+.message-content,
+.message-username {
+  overflow: hidden;
+  margin: 5px;
+  padding: 0 10px; }
+
+.message-content {
+  flex: 8; }
+
+.message-username {
+  flex: 2;
+  font-weight: 700; }
+
+.navbar {
+  display: flex;
+  align-items: stretch;
+  background: tomato;
+  border-bottom: 1px solid black;
+  height: 60px;
+  left: 0;
+  padding: 0 10px;
+  position: fixed;
+  right: 0;
+  top: 0; }
+
+.navbar-brand {
+  align-items: flex-start;
+  color: inherit;
+  display: block;
+  float: left;
+  font-weight: 700;
+  font-size: 2em;
+  height: 3em;
+  line-height: 3 em;
+  padding: 1em;
+  text-decoration: none; }
+
+.nav-image {
+  align-items: flex-end;
+  height: 60px;
+  display: right;
+  padding: 0; }
+</style></head>
+<body>
+
+  
+  <div id="react-root"><div data-reactroot=""><nav class="navbar"><div><!-- react-text: 4 --> <!-- /react-text --><!-- react-text: 5 -->1<!-- /react-text --><!-- react-text: 6 --> online <!-- /react-text --></div><img class="nav-image" src="./Chatty_files/Flower_ICQ.png"><h3>Not ICQ</h3></nav><footer class="chatbar"><input class="chatbar-username" id="username" placeholder="type a name" value="paul"><input class="chatbar-message" id="message" placeholder="Type a message and hit ENTER" value=""></footer><main class="messages"><div class="message"><span class="message-username">anon</span><span class="message-content">hello</span></div><div><h1><!-- react-text: 18 -->anon<!-- /react-text --><!-- react-text: 19 --> has transformed into <!-- /react-text --><!-- react-text: 20 -->paul<!-- /react-text --></h1></div></main></div></div>
+  <script src="./Chatty_files/bundle.js"></script>
+
+</body></html>
