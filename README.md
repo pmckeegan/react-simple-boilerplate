@@ -1,14 +1,14 @@
 Not ICQ Lighthouse Chatty Assignment
 =====================
-A lightweight browser based chat client.
+A demonstration lightweight browser based chat client.
 
 ### Usage
 
-This is a simple chat app for talking to your friends on the internet. 
+This is a simple chat app for talking to your friends on the internet. It allows users to chat anonymously or enter a user name. Displays the number of users connected at any time. Utilizes react, websockets, express server, sass and html.
 
 ![screenshot of Not ICQ](https://raw.githubusercontent.com/pmckeegan/react-simple-boilerplate/master/build/notICQ-screenshot.png)
 
-
+![screenshot 2 of Not ICQ](https://raw.githubusercontent.com/pmckeegan/react-simple-boilerplate/master/build/screen2.png)
 
 Install the dependencies and start the server.
 ```
