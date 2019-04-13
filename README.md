@@ -1,10 +1,10 @@
-##Not ICQ Lighthouse Chatty Assignment
+Not ICQ Lighthouse Chatty Assignment
 =====================
 A lightweight browser based chat client.
 
 ### Usage
 
-This is a simple chat app for talking to your friends on the internet.
+This is a simple chat app for talking to your friends on the internet. 
 
 ![screenshot of Not ICQ](https://raw.githubusercontent.com/pmckeegan/react-simple-boilerplate/master/build/notICQ-screenshot.png)
 
@@ -19,7 +19,7 @@ open http://localhost:3000
 
 ### Dependencies
 
-- "devDependencies": {
+"devDependencies":
 - "babel-core": "6.23.1",
 - "babel-loader": "6.3.1",
 - "babel-preset-es2015": "6.22.0",
@@ -35,7 +35,7 @@ open http://localhost:3000
 - "webpack": "2.2.1",
 - "webpack-dev-server": "2.3.0"
 
-"dependencies": {
+"dependencies":
 - "react": "15.4.2",
 - "react-dom": "15.4.2"
 - "express": "4.16.4",
