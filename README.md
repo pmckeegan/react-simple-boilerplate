@@ -1,45 +1,44 @@
-React Boilerplate
+Not ICQ Lighthouse Chatty Assignment
 =====================
-
-A minimal and light dev environment for ReactJS.
+A demonstration lightweight browser based chat client.
 
 ### Usage
 
-Clone the boilerplate and create your own git repo.
+This is a simple chat app for talking to your friends on the internet. It allows users to chat anonymously or enter a user name. Displays the number of users connected at any time. Utilizes react, websockets, express server, sass and html.
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+![screenshot of Not ICQ](https://raw.githubusercontent.com/pmckeegan/react-simple-boilerplate/master/build/notICQ-screenshot.png)
+
+![screenshot 2 of Not ICQ](https://raw.githubusercontent.com/pmckeegan/react-simple-boilerplate/master/build/screen2.png)
 
 Install the dependencies and start the server.
-
 ```
 npm install
 npm start
 open http://localhost:3000
 ```
 
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
-
 ### Dependencies
 
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+"devDependencies":
+- "babel-core": "6.23.1",
+- "babel-loader": "6.3.1",
+- "babel-preset-es2015": "6.22.0",
+- "babel-preset-react": "6.23.0",
+- "babel-preset-stage-0": "6.22.0",
+- "css-loader": "0.26.1",
+- "eslint": "3.15.0",
+- "eslint-plugin-react": "6.9.0",
+- "node-sass": "4.5.0",
+- "sass-loader": "6.0.0",
+- "sockjs-client": "^1.1.2",
+- "style-loader": "0.13.1",
+- "webpack": "2.2.1",
+- "webpack-dev-server": "2.3.0"
+
+"dependencies":
+- "react": "15.4.2",
+- "react-dom": "15.4.2"
+- "express": "4.16.4",
+- "uuid": "^3.3.2",
+- "ws": "6.2.1"
+
