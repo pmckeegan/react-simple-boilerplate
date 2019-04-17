@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // server.js
 
 const express = require('express');
@@ -32,14 +33,20 @@ wss.broadcast = function broadcast(message) {
 wss.on('connection', (ws) => {
   let connectedUsers = {clients: wss.clients.size, type: 'clientCount'}
   wss.broadcast (JSON.stringify(connectedUsers));
-
+  
   ws.on('message', function incoming(data) {
     const message = JSON.parse(data);
     message.id = uuid();
-    console.log("message", message);
     wss.broadcast (JSON.stringify(message));
   });
-});
-// Set up a callback for when a client closes the socket. This usually means they closed their browser.
+  // Set up a callback for when a client closes the socket. This usually means they closed their browser.
 // eslint-disable-next-line no-console
-wss.on('close', () => console.log('Client disconnected'));
+  ws.on('close', () => {
+    console.log('Someone Disconnected')
+  let connectedUsers = {clients: wss.clients.size, type: 'clientCount'}
+  wss.broadcast (JSON.stringify(connectedUsers));
+  })
+});
+
+
+
