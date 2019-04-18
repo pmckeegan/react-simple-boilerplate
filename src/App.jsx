@@ -43,16 +43,13 @@ newUsername(newUsername) {
   //connect to server and receive messages
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
-    this.socket.onopen = () => {
-    }; 
     this.socket.onmessage = (event) =>{
-     const messageFromServer =  JSON.parse(event.data);
+      const messageFromServer =  JSON.parse(event.data);
       const messageArray = this.state.messages;
       messageArray.push(messageFromServer);
       this.setState({messages: messageArray});
       
       if (messageFromServer.type === "clientCount") { 
-
       this.setState({peopleOnline: messageFromServer.clients})
       console.log("people online", this.state.peopleOnline)
       };
